@@ -36,14 +36,13 @@ if uploaded_file is not None:
         fig = make_subplots(
             rows=4, cols=1, shared_xaxes=True, vertical_spacing=0.04,
             subplot_titles=("<b>Vertical Axis (X)</b>", "<b>Lateral Axis (Y)</b>", 
-                            "<b>Anterior/Posterior (Z)</b>", "<b>Respiration (CR & C)</b>")
+                            "<b>Anterior/Posterior (Z)</b>", "<b>Respiration (Processed C)</b>")
         )
 
         fig.add_trace(go.Scatter(x=time_imu, y=ax, name='Axis X', line=dict(color='#00b4d8', width=1.2), hovertemplate='%{y:.2f}'), row=1, col=1)
         fig.add_trace(go.Scatter(x=time_imu, y=ay, name='Axis Y', line=dict(color='#fca311', width=1.2), hovertemplate='%{y:.2f}'), row=2, col=1)
         fig.add_trace(go.Scatter(x=time_imu, y=az, name='Axis Z', line=dict(color='#e63946', width=1.2), hovertemplate='%{y:.2f}'), row=3, col=1)
-        
-        fig.add_trace(go.Scatter(x=time_chest, y=cr, name='Chest Raw (cr)', line=dict(color='#9b5de5', width=1.5), hovertemplate='%{y:.2f}'), row=4, col=1)
+        # fig.add_trace(go.Scatter(x=time_chest, y=cr, name='Chest Raw (cr)', line=dict(color='#9b5de5', width=1.5), hovertemplate='%{y:.2f}'), row=4, col=1)
         fig.add_trace(go.Scatter(x=time_chest, y=c, name='Chest Processed (c)', line=dict(color='#1dd3b0', width=1.5), hovertemplate='%{y:.2f}'), row=4, col=1)
 
         fig.update_layout(
@@ -60,7 +59,7 @@ if uploaded_file is not None:
         fig.update_layout(
             template="plotly_white", paper_bgcolor="white", plot_bgcolor="white",
             font=dict(family="Arial, sans-serif", size=13, color="black"),
-            height=1000, hovermode="x unified",
+            height=950, hovermode="x unified",
             margin=dict(l=40, r=40, t=100, b=40),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
             hoverlabel=dict(bgcolor="white", font_size=14, font_family="Arial", font_color="black")
@@ -68,7 +67,8 @@ if uploaded_file is not None:
 
         fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='#eaeaea', zeroline=False)
         fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='#eaeaea', zeroline=False)
-        fig.update_xaxes(rangeslider_visible=True, row=4, col=1)
+        
+        fig.update_xaxes(rangeslider=dict(visible=True, thickness=0.05), row=4, col=1)
         fig.update_xaxes(title_text="<b>Time (seconds)</b>", row=4, col=1)
 
         st.plotly_chart(fig, use_container_width=True, theme=None)
