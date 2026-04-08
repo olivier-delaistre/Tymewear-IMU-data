@@ -59,7 +59,7 @@ if uploaded_file is not None:
         fig.update_xaxes(rangeslider_visible=True, row=3, col=1)
         fig.update_xaxes(title_text="<b>Time (seconds)</b>", row=3, col=1)
 
-        st.plotly_chart(fig, use_container_width=True, theme =none)
+        st.plotly_chart(fig, use_container_width=True, theme =None)
 
     except Exception as e:
         st.error("Oops, an error occurred while reading the file. Please check the CSV format.")
