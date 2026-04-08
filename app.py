@@ -5,10 +5,10 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from scipy.signal import butter, filtfilt
 
-st.set_page_config(page_title="Tymewear Analysis", layout="wide")
+st.set_page_config(page_title="Tymewear Data Viewer", layout="wide")
 st.title("Tymewear IMU & Chest Data")
 
-uploaded_file = st.file_uploader("Upload your Tymewear JSON file", type=["json"])
+uploaded_file = st.file_uploader("Upload your Tymewear JSON file - Drag and Drop here", type=["json"])
 
 if uploaded_file is not None:
     try:
@@ -36,7 +36,7 @@ if uploaded_file is not None:
         fig = make_subplots(
             rows=4, cols=1, shared_xaxes=True, vertical_spacing=0.04,
             subplot_titles=("<b>Vertical Axis (X)</b>", "<b>Lateral Axis (Y)</b>", 
-                            "<b>Anterior/Posterior (Z)</b>", "<b>Respiration (Processed C)</b>")
+                            "<b>Anterior/Posterior (Z)</b>", "<b>Chest Data</b>")
         )
 
         fig.add_trace(go.Scatter(x=time_imu, y=ax, name='Axis X', line=dict(color='#00b4d8', width=1.2), hovertemplate='%{y:.2f}'), row=1, col=1)
