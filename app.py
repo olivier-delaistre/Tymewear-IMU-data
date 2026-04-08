@@ -43,7 +43,7 @@ if uploaded_file is not None:
         fig.add_trace(go.Scatter(x=time_imu, y=ay, name='Axis Y', line=dict(color='#fca311', width=1.2), hovertemplate='%{y:.2f}'), row=2, col=1)
         fig.add_trace(go.Scatter(x=time_imu, y=az, name='Axis Z', line=dict(color='#e63946', width=1.2), hovertemplate='%{y:.2f}'), row=3, col=1)
         # fig.add_trace(go.Scatter(x=time_chest, y=cr, name='Chest Raw (cr)', line=dict(color='#9b5de5', width=1.5), hovertemplate='%{y:.2f}'), row=4, col=1)
-        fig.add_trace(go.Scatter(x=time_chest, y=c, name='Chest Processed (c)', line=dict(color='#1dd3b0', width=1.5), hovertemplate='%{y:.2f}'), row=4, col=1)
+        fig.add_trace(go.Scatter(x=time_chest, y=c, name='Chest Data', line=dict(color='#1dd3b0', width=1.5), hovertemplate='%{y:.2f}'), row=4, col=1)
 
         fig.update_layout(
             updatemenus=[dict(
